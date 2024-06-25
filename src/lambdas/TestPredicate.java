@@ -1,10 +1,7 @@
 package lambdas;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
 
 interface Evaluate<T>{
@@ -96,6 +93,31 @@ public class TestPredicate {
 
         BinaryOperator<String> binaryOp = (s1, s2) -> s1.concat(s2);
         System.out.println("Binary operator: " + binaryOp.apply("William", "cerceda"));
+    }
+
+    public void boundMethodReference() {
+        String name = "Mr. Aaron cerceda";
+
+        Supplier<String> lowerL = () -> name.toLowerCase(); // lambda
+        Supplier<String> upperMR = name::toLowerCase; // method reference
+
+        // No need to say which instance to call it on - the supplier is bound to name
+        System.out.println(lowerL.get());
+        System.out.println(upperMR.get());
+
+        // Predicate <T>
+        /*
+        * Even though startWidth is overloaded. boolean startsWith(String) and boolean startsWith(String, int), because
+        * we are creating a Predicate which has a functional method of test(T t), the startsWith(String) is used.
+        * This is where "context" is important!
+        * */
+
+        Predicate<String> titleL = (title) -> name.startsWith(title);
+        Predicate<String> titleMR = name::startsWith;
+
+        System.out.println(titleL.test("Mr.")); // true
+        System.out.println(titleMR.test("Ms.")); // false
+
     }
 
     public static void main(String[] args) {
@@ -221,6 +243,40 @@ public class TestPredicate {
         new TestPredicate().fullName = "Sean"; // instance/class vars are ok
         // if z was allowed to change, then the method and the lambda would have 2 different views of 'z'
         filterData(al, lambdaFinal);
+
+
+        System.out.println("------------------");
+
+        /*
+        * Method Reference
+        * - Lambda expression help in making your code more concise
+        * - Method references, can, in certain situations, help in making your lambda expression
+        * even more concise
+        *
+        * - If all your lambdas expressions does is call one method, then that is an opportunity to use a method
+        * reference.
+        *
+        * - If a lambda parameter is simply passes to another method, then the redundancy of specifying the
+        * variable twice can be removed.
+        *
+        * interface: Consumer <T>
+        * functional method: void accept(T t)
+        *
+        * There are four different styles/types:
+        * 1.- Bound - instance known at compile-time
+        * 2.- Unbound - instance provided at runtime
+        * 3.- Static
+        * 4.- Constructor
+        *
+        * With method references, context is key!
+        * - the function interface type being created is hugely important in determining context.
+        *
+        * */
+
+        List<String> names= Arrays.asList("Sean", "Mary", "John");
+        names.forEach(System.out::println); // method reference
+
+        testPredicate.boundMethodReference();
 
     }
 

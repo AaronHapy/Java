@@ -29,4 +29,3 @@ The goal of this is to master the key features of Java and explore advanced topi
 -   **Record Patterns**
 -   **Pattern matching for Switch**
 -   **Sequenced Collections**
-

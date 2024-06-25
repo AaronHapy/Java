@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ca41b76-44e2-4085-8be8-6ae812fdee8a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cats.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streams/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streams/Streams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lambdas/TestPredicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lambdas/TestPredicate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +38,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Streams.executor&quot;: &quot;Run&quot;,
     &quot;Application.TestPredicate.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -86,11 +90,26 @@
       <workItem from="1719033708751" duration="719000" />
       <workItem from="1719069243625" duration="13201000" />
       <workItem from="1719105866460" duration="9843000" />
-      <workItem from="1719168194071" duration="1126000" />
+      <workItem from="1719168194071" duration="4452000" />
+      <workItem from="1719201880921" duration="2074000" />
+      <workItem from="1719245763182" duration="1627000" />
+      <workItem from="1719262921963" duration="7609000" />
+      <workItem from="1719283098250" duration="4273000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
