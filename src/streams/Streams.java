@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 public class Streams {
 
@@ -171,6 +170,70 @@ public class Streams {
 
     }
 
+    public void groupBy() {
+        /*
+        * - groupingBy() tells collect() to group all of the elements into a Map
+        * - groupingBy() takes a function which determines the keys in the map
+        * - Each value is a List of all entries that match that key. The List is a default,
+        * which can be changed
+        * */
+
+        Stream<String> names = Stream.of("Joe", "Tom", "Tom", "Alan", "Peter");
+        Map<Integer, List<String>> map =
+                names.collect(
+                        Collectors.groupingBy(String::length)
+                );
+        System.out.println(map);
+
+        /*
+        * - What is we wanted to Set instead of a List as the value in the map (to remove the
+        * duplication of Tom)?
+        *
+        * - groupingBy() is overloaded to allow us to pass down "downstream collector". This is a
+        * collector that does something special with the values.
+        * */
+
+        Stream<String> names2 = Stream.of("Joe", "Tom", "Tom", "Alan", "Peter");
+        Map<Integer, Set<String>> map2 =
+                names2.collect(
+                        Collectors.groupingBy(
+                                String::length, // key function
+                                Collectors.toSet() // what to do with the values
+                        )
+                );
+
+        System.out.println(map2);
+
+    }
+
+    public void partitioningBy() {
+        /*
+        * Partitioning is a special case of grouping where there are only two possible groups - true
+        * and false.
+        *
+        * The keys will be the booleans - true and false
+        *
+        * */
+
+        Stream<String> names = Stream.of("Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Map<Boolean, List<String>> map =
+                names.collect(
+                        // pass in a predicate
+                        Collectors.partitioningBy(s -> s.startsWith("T"))
+                );
+        System.out.println(map); // {false=[Mike, Alan, Peter], true={Thomas, Teresa}
+
+        Stream<String> names2 = Stream.of("Thomas", "Teresa", "Mike", "Alan", "Peter");
+        Map<Boolean, List<String>> map2 =
+                names2.collect(
+                        // pass in a predicate
+                        Collectors.partitioningBy(s2 -> s2.length() > 4)
+                );
+
+        System.out.println(map2);// {false=[Mike, Alan], true=[Thomas, Teresa, Peter}}
+
+    }
+
     public static void main(String[] args) {
         List<String> animalList = Arrays.asList("cat", "dog", "sheep");
 
@@ -208,6 +271,111 @@ public class Streams {
         streamInstance.reduce();
 
         streamInstance.collection();
+
+        streamInstance.groupBy();
+
+        streamInstance.partitioningBy();
+
+        /*
+        * filter()
+        * -Unlike a terminal operation, an intermediate operation produces a stream as a result.
+        *
+        * distinct() returns a stream with duplicate values removed.
+        *   equals() is used i.e. case sensitive.
+        *
+        * distinct() is a stateful intermediate operation
+        *
+        * limit() is a short-circuit stateful intermediate operation
+        * */
+
+        Stream.of("galway", "mayo", "roscommon")
+                .filter(countyName -> countyName.length() > 5)
+                .forEach(System.out::println);
+
+        Stream.of("eagle", "eagle", "EAGLE")
+                .peek(s -> System.out.println(" 1. " + s))
+                .distinct()
+                .forEach(System.out::println);
+
+        Stream.of(11, 22, 33, 44, 55, 66, 77, 88, 99)
+                .peek(n -> System.out.println(" A - " + n))
+                .filter(n -> n > 40)
+                .peek(n -> System.out.println(" B - " + n))
+                .limit(2)
+                .forEach(n -> System.out.println(" C - " + n));
+
+        /*
+        *
+        * Intermediate Operations
+        * map()
+        *
+        * map() creates a one to one mapping between elements in the stream and elements in the
+        * next stage of the stream
+        *
+        * map() is for transofmr data
+        *
+        * map(Function<T,R> mapper)
+        *
+        * */
+
+        Stream.of("book", "pen", "ruler")
+                .map(s -> s.length()) // string:length
+                .forEach(System.out::print);
+
+        System.out.println("----------------------------------");
+
+        /*
+        * flatMap() takes each element in the stream e.g. Stream <List<String>> and makes
+        * any elements in contains tio-level elements in a single stream e.g. Stream<String>
+        * */
+
+        List<String> list1 = Arrays.asList("sean", "desmond");
+        List<String> list2 = Arrays.asList("mary", "ann");
+        Stream<List<String>> streamOfLists = Stream.of(list1, list2);
+
+        streamOfLists.flatMap(list -> list.stream())
+                .forEach(System.out::println);
+
+        System.out.println("------------------------------");
+
+        Person john = new Person("John", 23);
+        Person mary = new Person("mary", 25);
+
+        Stream.of(mary, john)
+                .sorted(Comparator.comparing(p -> p.getAge()))
+                .forEach(System.out::println);
+
+        Stream.of("Tim", "Jim", "Peter", "Ann", "Mary")
+                .peek(name -> System.out.println(" 0." + name)) // Tim, Jim, Peter, Ann, Mary
+                .filter(name -> name.length() == 3)
+                .peek(name -> System.out.println(" 1." + name)) // Tim, Jim, Ann
+                .sorted()
+                .peek(name -> System.out.println(" 2." + name))
+                .limit(2)
+                .forEach(name -> System.out.println(" 3." + name)); // Ann, Jim
+
+        Stream<Integer> nums = Stream.of(1,2,3);
+        System.out.println(nums.reduce(0, (n1, n2) -> n1 + n2)); // 6
+
+        IntStream intS = Stream.of(1,2,3)
+                .mapToInt(n -> n); // unboxed
+
+        int total = intS.sum();
+        System.out.println(total); // 6
+
+        OptionalInt max = IntStream.of(10, 20, 30)
+                .max();
+        max.ifPresent(System.out::println); // 30
+
+        OptionalDouble min = DoubleStream.of(10.0, 20.0, 30.0)
+                .min();
+
+        System.out.println(min.orElseThrow());// 10.0
+
+        OptionalDouble average = LongStream.of(10L, 20L, 30L)
+                .average();
+
+        System.out.println(average.orElseGet(() -> Math.random())); // 20
 
     }
 
