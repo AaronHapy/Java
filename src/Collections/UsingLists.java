@@ -2,7 +2,7 @@ package Collections;
 
 import java.util.*;
 
-public class Main {
+public class UsingLists {
 
     /*
     * Collections have four basic flavours:
@@ -18,6 +18,14 @@ public class Main {
     *
     *       - Stack - represents a last-in-first-out (LIFO) stack of objects. The Deque interface
     *           and its implementations are more complete and should be used instead.
+    *
+    * Set - collections with no duplicated elements.
+    *    - HashSet
+    *       - unsorted, unordered Set; uses the hashcode of the object being inserted; the more efficient
+    * your hashCode() implementation, the better access performance we will get.
+    *
+    *       - Use this class when you want a collection with no duplicates and you don't care about order when
+    * you iterate through it.
     * */
 
     public static void main(String[] args) {
@@ -30,9 +38,9 @@ public class Main {
 
     public static void factoryMethods() {
         String[] array = new String[]{"Alpha", "Beta", "Charlie"};
-        List<String> asList = Arrays.asList(array); // 'array' and 'asList' are now 'backed'
-        List<String> of = List.of(array);
-        List<String> copy = List.copyOf(asList);
+        java.util.List<String> asList = Arrays.asList(array); // 'array' and 'asList' are now 'backed'
+        java.util.List<String> of = java.util.List.of(array);
+        java.util.List<String> copy = java.util.List.copyOf(asList);
 
         array[0] = "Delta";
         System.out.println(Arrays.toString(array));
@@ -45,7 +53,7 @@ public class Main {
     }
 
     public static void arrayList() {
-        List<String> list = new ArrayList<>();
+        java.util.List<String> list = new ArrayList<>();
         list.add("Alan");
         list.add("Alan");
         list.add(1, "Sean");
