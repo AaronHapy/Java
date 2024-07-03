@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ca41b76-44e2-4085-8be8-6ae812fdee8a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Collections/UsingSets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Collections/Contact.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collections/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collections/UsingLists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collections/UsingSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collections/UsingSets.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,23 +33,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Streams.executor": "Run",
-    "Application.TestPredicate.executor": "Run",
-    "Application.UsingSets.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Streams.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestPredicate.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UsingSets.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.UsingSets">
     <configuration name="Streams" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="streams.Streams" />
@@ -141,7 +141,8 @@
       <workItem from="1719355880140" duration="2221000" />
       <workItem from="1719518969317" duration="2456000" />
       <workItem from="1719535817197" duration="2393000" />
-      <workItem from="1719862964313" duration="11866000" />
+      <workItem from="1719862964313" duration="12321000" />
+      <workItem from="1719961921306" duration="4003000" />
     </task>
     <servers />
   </component>
